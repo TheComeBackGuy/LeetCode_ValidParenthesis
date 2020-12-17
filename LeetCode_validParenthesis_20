@@ -1,0 +1,60 @@
+// /**
+//  * @param {string[]} strs
+//  * @return {string}
+//  */
+// var longestCommonPrefix = function (strs) {
+//   const checkArray = [];
+//   for (let i = 0; i < strs.length; i++) {
+//     checkArray.push(strs[i].charAt(0));
+//     console.log(checkArray);
+//   }
+// };
+
+// const names = ["barry", "barry"];
+// console.log(names[0].localeCompare(names[1]));
+// longestCommonPrefix(["yes", "yellow", "yesh", "candy", "cash"]);
+
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isValid = function (s) {
+  console.log(" orginal : " + s);
+
+  // while (s.length < 0) {
+  for (let i = 0; i < s.length; i++) {
+    s = s.replace("()", "");
+    s = s.replace("{}", "");
+    s = s.replace("[]", "");
+    console.log("changed : " + s);
+    // }
+  }
+  if (
+    s.search("()") === false &&
+    s.search("{}" === false && s.search("[]" === false))
+  ) {
+    console.log("false");
+    return false;
+  } else {
+    console.log("false");
+    return true;
+  }
+};
+// for (let i = 0; i < s.length; i++) {
+//   console.log
+//   if (
+//     (s.charAt(i) === "{" && s.charAt(i + 1) === "}") ||
+//     (s.charAt(i) === "[" && s.charAt(i + 1) === "]") ||
+//     (s.charAt(i) === "(" && s.charAt(i + 1) === ")")
+//   ) {
+//     //delete letter and letter+1
+//     // s = s.substr(i + 1, 1);
+//     s = s.replace(i, "");
+//     // s = s.substr(i, 2);
+//     console.log("changed : " + s);
+//   }
+// }
+// }
+// };
+
+isValid("([[][]{({}({}))}])");
