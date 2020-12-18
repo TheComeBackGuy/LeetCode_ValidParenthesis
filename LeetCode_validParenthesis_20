@@ -5,13 +5,15 @@
 
 var isValid = function (s) {
   // console.log(" orginal : " + s);
-  // const parenTypes = ["()", "[]", "{}"];
+  const parenTypes = ["()", "[]", "{}"];
 
   let foundOne = (string) => {
+    // console.log(string.search("()"));
     if (
-      string.search("()") === -1 &&
-      string.search("[]") === -1 &&
-      string.search("{}") === -1
+      string.indexOf("()") === -1 &&
+      string.indexOf("[]") === -1 &&
+      string.indexOf("{}") === -1 &&
+      string.length > 0
     ) {
       return false;
     } else {
@@ -22,25 +24,32 @@ var isValid = function (s) {
   console.log("foundOne is: " + foundOne(s));
 
   function deletePairs() {
-    foundOne(s);
-    console.log(s);
-    if (foundOne(s) !== -1) {
-      for (let i = 0; i < s.length; i++) {
-        // parenTypes.forEach((p) => {
-        s = s.replace("()", "");
-        s = s.replace("[]", "");
-        s = s.replace("{}", "");
-        console.log(s);
-        // });
+    // console.log(s);
+    if (foundOne(s) === true) {
+      for (let i = 0; i <= s.length; i++) {
+        console.log(s.length);
+        parenTypes.forEach((p) => {
+          s = s.replace(p, "");
+          s = s.replace(p, "");
+          s = s.replace(p, "");
+          console.log(s);
+          // console.log(foundOne(s));
+        });
       }
-    } else if (foundOne(s) === -1) {
-      console.log("false");
+    } else {
       return false;
     }
   }
 
   deletePairs();
-
+  if (s.length === 0) {
+    console.log("true");
+    return true;
+  }
+  if (foundOne(s) === false) {
+    console.log("false");
+    return false;
+  }
 };
 
-isValid("()()()())");
+isValid("()");
