@@ -1,60 +1,46 @@
-// /**
-//  * @param {string[]} strs
-//  * @return {string}
-//  */
-// var longestCommonPrefix = function (strs) {
-//   const checkArray = [];
-//   for (let i = 0; i < strs.length; i++) {
-//     checkArray.push(strs[i].charAt(0));
-//     console.log(checkArray);
-//   }
-// };
-
-// const names = ["barry", "barry"];
-// console.log(names[0].localeCompare(names[1]));
-// longestCommonPrefix(["yes", "yellow", "yesh", "candy", "cash"]);
-
 /**
  * @param {string} s
  * @return {boolean}
  */
+
 var isValid = function (s) {
-  console.log(" orginal : " + s);
+  // console.log(" orginal : " + s);
+  // const parenTypes = ["()", "[]", "{}"];
 
-  // while (s.length < 0) {
-  for (let i = 0; i < s.length; i++) {
-    s = s.replace("()", "");
-    s = s.replace("{}", "");
-    s = s.replace("[]", "");
-    console.log("changed : " + s);
-    // }
+  let foundOne = (string) => {
+    if (
+      string.search("()") === -1 &&
+      string.search("[]") === -1 &&
+      string.search("{}") === -1
+    ) {
+      return false;
+    } else {
+      return true;
+    }
+  };
+
+  console.log("foundOne is: " + foundOne(s));
+
+  function deletePairs() {
+    foundOne(s);
+    console.log(s);
+    if (foundOne(s) !== -1) {
+      for (let i = 0; i < s.length; i++) {
+        // parenTypes.forEach((p) => {
+        s = s.replace("()", "");
+        s = s.replace("[]", "");
+        s = s.replace("{}", "");
+        console.log(s);
+        // });
+      }
+    } else if (foundOne(s) === -1) {
+      console.log("false");
+      return false;
+    }
   }
-  if (
-    s.search("()") === false &&
-    s.search("{}" === false && s.search("[]" === false))
-  ) {
-    console.log("false");
-    return false;
-  } else {
-    console.log("false");
-    return true;
-  }
+
+  deletePairs();
+
 };
-// for (let i = 0; i < s.length; i++) {
-//   console.log
-//   if (
-//     (s.charAt(i) === "{" && s.charAt(i + 1) === "}") ||
-//     (s.charAt(i) === "[" && s.charAt(i + 1) === "]") ||
-//     (s.charAt(i) === "(" && s.charAt(i + 1) === ")")
-//   ) {
-//     //delete letter and letter+1
-//     // s = s.substr(i + 1, 1);
-//     s = s.replace(i, "");
-//     // s = s.substr(i, 2);
-//     console.log("changed : " + s);
-//   }
-// }
-// }
-// };
 
-isValid("([[][]{({}({}))}])");
+isValid("()()()())");
